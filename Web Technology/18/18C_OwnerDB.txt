@@ -1,0 +1,25 @@
+-- Create the Owner table
+CREATE TABLE Owner (
+    oname VARCHAR(50) PRIMARY KEY,
+    address VARCHAR(100),
+    phone VARCHAR(15)
+);
+
+-- Create the Property table
+CREATE TABLE Property (
+    pno SERIAL PRIMARY KEY,
+    description VARCHAR(100),
+    area VARCHAR(50),
+    owner_name VARCHAR(50),
+    FOREIGN KEY (owner_name) REFERENCES Owner(oname) ON DELETE CASCADE
+);
+
+-- Insert sample data
+INSERT INTO Owner (oname, address, phone) VALUES
+('Rahul Sharma', 'Mumbai, Maharashtra', '9876543210'),
+('Priya Desai', 'Pune, Maharashtra', '9765432109');
+
+INSERT INTO Property (description, area, owner_name) VALUES
+('3BHK Apartment', '1200 sq ft', 'Rahul Sharma'),
+('2BHK Flat', '900 sq ft', 'Rahul Sharma'),
+('Office Space', '1500 sq ft', 'Priya Desai');

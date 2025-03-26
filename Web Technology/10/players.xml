@@ -1,0 +1,27 @@
+<cricket>
+    <player>
+        <name>Virat Kohli</name>
+        <runs>120</runs>
+        <wickets>3</wickets>
+    </player>
+    <player>
+        <name>Rohit Sharma</name>
+        <runs>95</runs>
+        <wickets>1</wickets>
+    </player>
+    <player>
+        <name>Shubman Gill</name>
+        <runs>150</runs>
+        <wickets>0</wickets>
+    </player>
+    <player>
+        <name>Jasprit Bumrah</name>
+        <runs>45</runs>
+        <wickets>4</wickets>
+    </player>
+    <player>
+        <name>Ravindra Jadeja</name>
+        <runs>110</runs>
+        <wickets>2</wickets>
+    </player>
+</cricket>

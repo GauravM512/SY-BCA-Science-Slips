@@ -1,0 +1,22 @@
+<subjects>
+    <subject>
+        <code>BCA 101</code>
+        <name>Database Management Systems</name>
+    </subject>
+    <subject>
+        <code>BCA 202</code>
+        <name>Data Structures and Algorithms</name>
+    </subject>
+    <subject>
+        <code>BCA 245</code>
+        <name>Web Technology Laboratory</name>
+    </subject>
+    <subject>
+        <code>BCA 303</code>
+        <name>Software Engineering</name>
+    </subject>
+    <subject>
+        <code>BCA 404</code>
+        <name>Artificial Intelligence</name>
+    </subject>
+</subjects>

@@ -1,0 +1,3 @@
+Hello, this is a sample text file.
+It contains multiple lines of text.
+AJAX will read and display it dynamically.

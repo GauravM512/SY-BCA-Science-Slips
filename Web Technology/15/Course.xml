@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<College>
+  <Courses>
+    <Course>
+      <Name>Arts</Name>
+      <Level>Undergraduate</Level>
+      <Intake_Capacity>120</Intake_Capacity>
+    </Course>
+    <Course>
+      <Name>Science</Name>
+      <Level>Postgraduate</Level>
+      <Intake_Capacity>80</Intake_Capacity>
+    </Course>
+    <Course>
+      <Name>Commerce</Name>
+      <Level>Undergraduate</Level>
+      <Intake_Capacity>100</Intake_Capacity>
+    </Course>
+    <Course>
+      <Name>Management</Name>
+      <Level>MBA</Level>
+      <Intake_Capacity>60</Intake_Capacity>
+    </Course>
+  </Courses>
+</College>

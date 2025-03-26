@@ -1,0 +1,28 @@
+CREATE DATABASE sales_db;
+
+USE sales_db;
+
+CREATE TABLE Client (
+    clientno INT PRIMARY KEY,
+    name VARCHAR(50),
+    address VARCHAR(100)
+);
+
+CREATE TABLE Sales_order (
+    sonumber INT PRIMARY KEY,
+    clientno INT,
+    s_order_date DATE,
+    FOREIGN KEY (clientno) REFERENCES Client(clientno)
+);
+
+-- Insert Sample Data
+INSERT INTO Client (clientno, name, address) VALUES
+(1, 'Rahul Sharma', 'Pune'),
+(2, 'Priya Mehta', 'Mumbai'),
+(3, 'Vikas Patil', 'Delhi');
+
+INSERT INTO Sales_order (sonumber, clientno, s_order_date) VALUES
+(101, 1, '2024-02-15'),
+(102, 2, '2024-03-10'),
+(103, 1, '2024-01-25'),
+(104, 3, '2024-04-05');

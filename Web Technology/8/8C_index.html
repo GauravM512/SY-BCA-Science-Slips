@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CD Catalog</title>
+    <script>
+        function loadCatalog() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "8C.php", true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    displayCatalog(xhr.responseXML);
+                }
+            };
+            xhr.send();
+        }
+
+        function displayCatalog(xml) {
+            let cds = xml.getElementsByTagName("CD");
+            let output = "<h2>CD Catalog</h2><table border='1'><tr><th>Title</th><th>Artist</th><th>Country</th><th>Company</th><th>Price (INR)</th><th>Year</th></tr>";
+
+            for (let i = 0; i < cds.length; i++) {
+                let title = cds[i].getElementsByTagName("TITLE")[0].textContent;
+                let artist = cds[i].getElementsByTagName("ARTIST")[0].textContent;
+                let country = cds[i].getElementsByTagName("COUNTRY")[0].textContent;
+                let company = cds[i].getElementsByTagName("COMPANY")[0].textContent;
+                let price = cds[i].getElementsByTagName("PRICE")[0].textContent;
+                let year = cds[i].getElementsByTagName("YEAR")[0].textContent;
+
+                output += `<tr>
+                            <td>${title}</td>
+                            <td>${artist}</td>
+                            <td>${country}</td>
+                            <td>${company}</td>
+                            <td>${price}</td>
+                            <td>${year}</td>
+                        </tr>`;
+            }
+
+            output += "</table>";
+            document.getElementById("catalog").innerHTML = output;
+        }
+    </script>
+</head>
+<body>
+    <h1>Indian CD Catalog Viewer</h1>
+    <button onclick="loadCatalog()">Load CD Catalog</button>
+    <div id="catalog"></div>
+</body>
+</html>

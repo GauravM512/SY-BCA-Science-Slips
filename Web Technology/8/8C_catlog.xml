@@ -1,0 +1,58 @@
+<CATALOG>
+    <CD>
+        <TITLE>Tum Hi Ho</TITLE>
+        <ARTIST>Arijit Singh</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>T-Series</COMPANY>
+        <PRICE>150</PRICE>
+        <YEAR>2013</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Kesariya</TITLE>
+        <ARTIST>Arijit Singh</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>Sony Music</COMPANY>
+        <PRICE>200</PRICE>
+        <YEAR>2022</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Chaiyya Chaiyya</TITLE>
+        <ARTIST>Sukhwinder Singh</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>Venus Records</COMPANY>
+        <PRICE>180</PRICE>
+        <YEAR>1998</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Kal Ho Naa Ho</TITLE>
+        <ARTIST>Sonu Nigam</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>Saregama</COMPANY>
+        <PRICE>220</PRICE>
+        <YEAR>2003</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Maan Meri Jaan</TITLE>
+        <ARTIST>King</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>Times Music</COMPANY>
+        <PRICE>190</PRICE>
+        <YEAR>2022</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Ghungroo</TITLE>
+        <ARTIST>Arijit Singh</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>YRF Music</COMPANY>
+        <PRICE>210</PRICE>
+        <YEAR>2019</YEAR>
+    </CD>
+    <CD>
+        <TITLE>Jai Ho</TITLE>
+        <ARTIST>A.R. Rahman</ARTIST>
+        <COUNTRY>India</COUNTRY>
+        <COMPANY>Sony Music</COMPANY>
+        <PRICE>250</PRICE>
+        <YEAR>2008</YEAR>
+    </CD>
+</CATALOG>
