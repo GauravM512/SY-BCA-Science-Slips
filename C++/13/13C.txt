@@ -1,0 +1,4 @@
+C++ programming is fun.  
+C++ is a powerful language.  
+I love writing C++ code.  
+C++ makes coding easier.  
