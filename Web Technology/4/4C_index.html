@@ -1,32 +1,28 @@
+<!--Write AJAX program to read a text file and print the contents of the file when the user clicks on the Print button.-->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>AJAX Text File Reader</title>
+    <title>AJAX Text Reader</title>
+    <script>
+        function loadTextFile() {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    document.getElementById("output").innerText = xhr.responseText;
+                } else {
+                    document.getElementById("output").innerText = "Error loading file.";
+                }
+            };
+            xhr.open("GET", "4C_sample.txt", true);
+            xhr.send();
+        }
+    </script>
 </head>
 <body>
 
-<h2>Click the button to print the text file content:</h2>
-
-<button onclick="loadFile()">Print</button>
-<div id="output"></div>
-
-<script>
-function loadFile() {
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "readfile.php", true);
-
-    xhr.onload = function () {
-        if (xhr.status === 200) {
-            document.getElementById("output").innerText = xhr.responseText;
-        } else {
-            document.getElementById("output").innerText = "Failed to load file.";
-        }
-    };
-
-    xhr.send();
-}
-</script>
+    <h3>Read Text File using AJAX</h3>
+    <button onclick="loadTextFile()">Print</button>
+    <div id="output"></div>
 
 </body>
 </html>

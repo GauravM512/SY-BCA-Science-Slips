@@ -1,11 +1,14 @@
--- Create the Owner table
+CREATE DATABASE property_db;
+
+\c property_db;
+
 CREATE TABLE Owner (
     oname VARCHAR(50) PRIMARY KEY,
     address VARCHAR(100),
     phone VARCHAR(15)
 );
 
--- Create the Property table
+
 CREATE TABLE Property (
     pno SERIAL PRIMARY KEY,
     description VARCHAR(100),
@@ -14,7 +17,7 @@ CREATE TABLE Property (
     FOREIGN KEY (owner_name) REFERENCES Owner(oname) ON DELETE CASCADE
 );
 
--- Insert sample data
+
 INSERT INTO Owner (oname, address, phone) VALUES
 ('Rahul Sharma', 'Mumbai, Maharashtra', '9876543210'),
 ('Priya Desai', 'Pune, Maharashtra', '9765432109');

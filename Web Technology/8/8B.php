@@ -1,7 +1,9 @@
+<?/*Declare a Multidimensional Array. Display specific element from a Multidimensional array.
+ Also delete given element from the Multidimensional array.(After each operation display array content.)*/?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Multidimensional Array Operations</title>
 </head>
 <body>
@@ -23,8 +25,8 @@ echo "</pre>";
 echo "<br><br><b>Specific Element (3rd Row, First Name):</b><br>";
 echo $multiArray[2][0]; 
 
-unset($multiArray[1][1]);
-echo "<br><br><b>Array After Deletion (Removing 'Smith'):</b><br>";
+unset($multiArray[2][0]);
+echo "<br><br><b>Array After Deletion (Removing 'Dinesh'):</b><br>";
 echo "<pre>";
 print_r($multiArray);
 echo "</pre>";

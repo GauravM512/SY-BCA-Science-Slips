@@ -1,29 +1,24 @@
-<?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "sales_db";
+<?/*Sales_order (sonumber, s_order_date)
+    a. Client (clientno, name, address)
+    b. A client can give one or more sales_orders, but a sales_order belongs to exactly one client.
+    c. Accept sales order date from the user. 
+Write a PHP script which will display all orders which are placed before that date.*/?>
 
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+<?php
+
+$db = pg_connect("host=localhost dbname=sales_db user=postgres password=root") or die("Could not connect to database");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $date = $_POST['date'];
     
-    $sql = "SELECT s.sonumber, s.s_order_date, c.name, c.address 
+    $sql = "SELECT s.sonumber, s.s_order_date, c.name, c.address
             FROM Sales_order s
             JOIN Client c ON s.clientno = c.clientno
-            WHERE s.s_order_date < ?";
+            WHERE s.s_order_date < '$date'";
     
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $date);
-    $stmt->execute();
+    $result = pg_query($db, $sql) or die("Cannot Execute Query");
     
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
+    if (pg_num_rows($result) > 0) {
         echo "<h3>Sales Orders Before $date:</h3>";
         echo "<table border='1'>
                 <tr>
@@ -32,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <th>Client Name</th>
                     <th>Address</th>
                 </tr>";
-        while ($row = $result->fetch_assoc()) {
+        while ($row = pg_fetch_assoc($result)) {
             echo "<tr>
                     <td>{$row['sonumber']}</td>
                     <td>{$row['s_order_date']}</td>
@@ -44,23 +39,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "No orders found before $date.";
     }
-
-    $stmt->close();
 }
-$conn->close();
+
+pg_close($db);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Sales Orders Before Date</title>
 </head>
 <body>
-    <h2>Enter Date to Find Sales Orders Before It:</h2>
+    <h3>Enter Date to Find Sales Orders Before It:</h3><br>
     <form method="post">
-        <label for="date">Enter Date:</label>
-        <input type="date" name="date" required>
+        Enter Date:<input type="date" name="date" required>
         <button type="submit">Search</button>
     </form>
 </body>

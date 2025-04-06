@@ -1,5 +1,10 @@
+<?/*Write a PHP script for the following: Design a form to accept two strings. Compare the 
+two strings using both methods (= = operator & strcmp function). Append second string to 
+the first string. Accept the position from the user; from where the characters from the first 
+string are reversed. (Use radio buttons)*/?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>String Operations</title>
 </head>

@@ -1,5 +1,9 @@
+<?/*Write a menu driven program the following operation on an associative array
+a) Reverse the order of each element’s key-value pair. [Hint: array_flip()]
+b) Traverse the element in an array in random order. [Hint: shuffle()] [20 Marks]*/?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Associative Array Operations</title>
 </head>
@@ -16,52 +20,27 @@
 </form>
 
 <?php
-$data = array(
-    "one" => 1,
-    "two" => 2,
-    "three" => 3,
-    "four" => 4
-);
-
-function reverseKeyValue($array) {
-    return array_flip($array);
-}
-
-function shuffleAssociative($array) {
-    $keys = array_keys($array);
-    shuffle($keys);
-
-    $shuffledArray = [];
-    foreach ($keys as $key) {
-        $shuffledArray[$key] = $array[$key];
-    }
-    return $shuffledArray;
-}
+$data = array("one" => 1, "two" => 2, "three" => 3, "four" => 4);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $choice = $_POST["choice"];
-
-    echo "<h3>Result:</h3>";
-    echo "<pre>";
+    echo "<h3>Result:</h3><pre>";
 
     switch ($choice) {
         case '1':
-            echo "Reversed Key-Value Pairs:\n";
-            print_r(reverseKeyValue($data));
+            print_r(array_flip($data));  // Reverse key-value pairs
             break;
         case '2':
-            echo "Array in Random Order:\n";
-            print_r(shuffleAssociative($data));
-            break;
-        case '3':
-            echo "Original Array:\n";
+            shuffle($data);  // Shuffle array values
             print_r($data);
             break;
+        case '3':
+            print_r($data);  // Display original array
+            break;
         case '4':
-            echo "Exiting program...";
-            exit;
+            exit("Exiting program...");
         default:
-            echo "Invalid choice. Please try again.";
+            echo "Invalid choice.";
     }
 
     echo "</pre>";
@@ -70,3 +49,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 </html>
+

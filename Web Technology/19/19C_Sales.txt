@@ -1,21 +1,21 @@
+
 CREATE DATABASE sales_db;
 
-USE sales_db;
+
+ \c sales_db
 
 CREATE TABLE Client (
-    clientno INT PRIMARY KEY,
+    clientno INTEGER PRIMARY KEY,
     name VARCHAR(50),
     address VARCHAR(100)
 );
 
 CREATE TABLE Sales_order (
-    sonumber INT PRIMARY KEY,
-    clientno INT,
-    s_order_date DATE,
-    FOREIGN KEY (clientno) REFERENCES Client(clientno)
+    sonumber INTEGER PRIMARY KEY,
+    clientno INTEGER REFERENCES Client(clientno),
+    s_order_date DATE
 );
 
--- Insert Sample Data
 INSERT INTO Client (clientno, name, address) VALUES
 (1, 'Rahul Sharma', 'Pune'),
 (2, 'Priya Mehta', 'Mumbai'),

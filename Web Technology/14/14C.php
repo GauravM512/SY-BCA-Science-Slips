@@ -1,103 +1,97 @@
+<?/*Write class declarations and member function definitions for Teacher (code, name, qualification). 
+Derive teach_account(account_no,joining_date) from Teacher and teach_sal(basic_pay, earnings, deduction) 
+fromteach_account. Write a menu driven program
+    To build a master table To sort all entries
+    To search an entry
+    Display salary of all teachers.
+*/?>
+
 <?php
 session_start();
 
-class Teacher 
-{
-    public $code;
-    public $name;
-    public $qualification;
-
-    public function __construct($code, $name, $qualification) {
-        $this->code = $code;
-        $this->name = $name;
-        $this->qualification = $qualification;
+class Teacher {
+    public $tid, $nam, $qua;
+    function __construct($tid, $nam, $qua) {
+        $this->tid = $tid;
+        $this->nam = $nam;
+        $this->qua = $qua;
     }
 }
 
-class TeachAccount extends Teacher {
-    public $account_no;
-    public $joining_date;
-
-    public function __construct($code, $name, $qualification, $account_no, $joining_date) {
-        parent::__construct($code, $name, $qualification);
-        $this->account_no = $account_no;
-        $this->joining_date = $joining_date;
+class TeacherAcc extends Teacher {
+    public $acc, $jdt;
+    function __construct($tid, $nam, $qua, $acc, $jdt) {
+        parent::__construct($tid, $nam, $qua);
+        $this->acc = $acc;
+        $this->jdt = $jdt;
     }
 }
 
-
-class TeachSal extends TeachAccount {
-    public $basic_pay;
-    public $earnings;
-    public $deduction;
-
-    public function __construct($code, $name, $qualification, $account_no, $joining_date, $basic_pay, $earnings, $deduction) {
-        parent::__construct($code, $name, $qualification, $account_no, $joining_date);
-        $this->basic_pay = $basic_pay;
-        $this->earnings = $earnings;
-        $this->deduction = $deduction;
+class TeacherSal extends TeacherAcc {
+    public $bas, $ern, $ded;
+    function __construct($tid, $nam, $qua, $acc, $jdt, $bas, $ern, $ded) {
+        parent::__construct($tid, $nam, $qua, $acc, $jdt);
+        $this->bas = $bas;
+        $this->ern = $ern;
+        $this->ded = $ded;
     }
 
-    public function calculateSalary() {
-        return $this->basic_pay + $this->earnings - $this->deduction;
+    function calcSal() {
+        return $this->bas + $this->ern - $this->ded;
     }
 }
 
-if (!isset($_SESSION['teachers'])) {
-    $_SESSION['teachers'] = [];
+if (!isset($_SESSION['data'])) {
+    $_SESSION['data'] = [];
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
-    $code = $_POST['code'];
-    $name = $_POST['name'];
-    $qualification = $_POST['qualification'];
-    $account_no = $_POST['account_no'];
-    $joining_date = $_POST['joining_date'];
-    $basic_pay = $_POST['basic_pay'];
-    $earnings = $_POST['earnings'];
-    $deduction = $_POST['deduction'];
+    $tid = $_POST['tid'];
+    $nam = $_POST['nam'];
+    $qua = $_POST['qua'];
+    $acc = $_POST['acc'];
+    $jdt = $_POST['jdt'];
+    $bas = $_POST['bas'];
+    $ern = $_POST['ern'];
+    $ded = $_POST['ded'];
 
-    $teacher = new TeachSal($code, $name, $qualification, $account_no, $joining_date, $basic_pay, $earnings, $deduction);
-    $_SESSION['teachers'][] = $teacher;
+    $t = new TeacherSal($tid, $nam, $qua, $acc, $jdt, $bas, $ern, $ded);
+    $_SESSION['data'][] = $t;
 }
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-
-    switch ($action) {
-        case 'build_table':
-            echo "Master table has been built.<br>";
+if (isset($_GET['act'])) {
+    $act = $_GET['act'];
+    switch ($act) {
+        case 'build':
+            echo "Master table built.<br>";
             break;
 
-        case 'sort_entries':
-            usort($_SESSION['teachers'], function ($a, $b) 
-            {
-                return strcmp($a->name, $b->name);
-            });
-
-            echo "Entries have been sorted by name.<br>";
+        case 'sort':
+            usort($_SESSION['data'], fn($a, $b) => strcmp($a->nam, $b->nam));
+            echo "Sorted by name.<br>";
             break;
 
-        case 'search_entry':
-            $search_code = $_GET['search_code'];
+        case 'search':
+            $findId = $_GET['tid'];
             $found = false;
-            foreach ($_SESSION['teachers'] as $teacher) {
-                if ($teacher->code == $search_code) {
-                    echo "Teacher found: Name: {$teacher->name}, Qualification: {$teacher->qualification}, Account No: {$teacher->account_no}, Joining Date: {$teacher->joining_date}<br>";
+            foreach ($_SESSION['data'] as $t) {
+                if ($t->tid == $findId) {
+                    echo "Found:<br>";
+                    echo "Name: $t->nam<br>";
+                    echo "Qual: $t->qua<br>";
+                    echo "Acc: $t->acc<br>";
+                    echo "Join Date: $t->jdt<br>";
                     $found = true;
                     break;
                 }
             }
-            if (!$found) {
-                echo "No teacher found with code: $search_code<br>";
-            }
+            if (!$found) echo "No record with ID: $findId<br>";
             break;
 
-        case 'display_salaries':
-            echo "<h2>Teacher Salaries:</h2>";
-            foreach ($_SESSION['teachers'] as $teacher) {
-                $salary = $teacher->calculateSalary();
-                echo "Name: {$teacher->name}, Salary: $salary<br>";
+        case 'salary':
+            echo "Salaries:<br>";
+            foreach ($_SESSION['data'] as $t) {
+                echo "Name: $t->nam, Salary: ".$t->calcSal()."<br>";
             }
             break;
 
@@ -109,48 +103,37 @@ if (isset($_GET['action'])) {
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>A4SetA3</title>
-</head>
+<head><title>Teacher Info</title></head>
 <body>
 
-<h1>Teacher Information Form</h1>
-<form action="14C.php" method="POST">
-    Code: <input type="text" name="code"><br>
-    Name: <input type="text" name="name"><br>
-    Qualification: <input type="text" name="qualification"><br>
-    Account No: <input type="text" name="account_no"><br>
-    Joining Date: <input type="date" name="joining_date"><br>
-    Basic Pay: <input type="number" name="basic_pay"><br>
-    Earnings: <input type="number" name="earnings"><br>
-    Deduction: <input type="number" name="deduction"><br>
-    <input type="submit" name="submit" value="Submit">
+<h2>Enter Teacher Details</h2>
+<form method="POST">
+    ID: <input type="text" name="tid"><br>
+    Name: <input type="text" name="nam"><br>
+    Qualification: <input type="text" name="qua"><br>
+    Account No: <input type="text" name="acc"><br>
+    Join Date: <input type="date" name="jdt"><br>
+    Basic Salary: <input type="number" name="bas"><br>
+    Earnings: <input type="number" name="ern"><br>
+    Deductions: <input type="number" name="ded"><br>
+    <input type="submit" name="submit" value="Save">
 </form>
 
-<h2>Menu</h2>
-<form action="14C.php" method="GET">
-    <label>
-        <input type="radio" name="action" value="build_table" onclick="this.form.submit()"> Build Master Table
-    </label><br>
-    <label>
-        <input type="radio" name="action" value="sort_entries" onclick="this.form.submit()"> Sort Entries
-    </label><br>
-    <label>
-        <input type="radio" name="action" value="search_entry" onclick="getindex()"> Search Entry
-    </label><br>
-    <div id="inputs"></div>
-    <script>
-        function getindex() 
-        {
-            const inputsDiv = document.getElementById('inputs');
-            inputsDiv.innerHTML = '';
-            inputsDiv.innerHTML = 'Enter Code: <input type="number" name="search_code" required><br><input type = "submit" value = "Search"/>';
-        }
-    </script>
-    <label>
-        <input type="radio" name="action" value="display_salaries" onclick="this.form.submit()"> Display Salaries
-    </label><br>
+<h3>Menu</h3>
+<form method="GET">
+    <label><input type="radio" name="act" value="build" onclick="this.form.submit()"> Build</label><br>
+    <label><input type="radio" name="act" value="sort" onclick="this.form.submit()"> Sort</label><br>
+    <label><input type="radio" name="act" value="search" onclick="showSearch()"> Search</label><br>
+    <div id="searchBox"></div>
+    <label><input type="radio" name="act" value="salary" onclick="this.form.submit()"> Show Salary</label><br>
 </form>
+
+<script>
+function showSearch() {
+    document.getElementById('searchBox').innerHTML =
+        'Enter ID: <input type="text" name="tid"> <input type="submit" value="Search">';
+}
+</script>
 
 </body>
 </html>

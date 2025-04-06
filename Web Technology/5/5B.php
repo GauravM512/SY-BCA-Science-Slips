@@ -1,5 +1,9 @@
+<?/*Write a menu driven program to perform the following operations on an associative array:
+a) Display the elements of an array along with the keys.
+b) Display the size of an array*/?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Associative Array Operations</title>
 </head>

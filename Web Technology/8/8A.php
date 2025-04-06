@@ -1,3 +1,5 @@
+<?//Design a HTML form to accept a string. Write a PHP function that checks whether a passed string is a palindrome or not??>
+
 <!DOCTYPE html>
 <html>
 <body>

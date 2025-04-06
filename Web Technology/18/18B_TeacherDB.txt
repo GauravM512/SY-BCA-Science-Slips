@@ -1,14 +1,16 @@
+
+CREATE DATABASE Teacher_DB;
+
+\c Teacher_DB
+
 CREATE TABLE Teacher (
     Tno SERIAL PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Subject VARCHAR(100) NOT NULL,
-    Research_area VARCHAR(150) NOT NULL
+    Name VARCHAR(100),
+    Subject VARCHAR(100),
+    Research_area VARCHAR(200)
 );
 
--- Insert sample data
 INSERT INTO Teacher (Name, Subject, Research_area) VALUES
-('Rajesh Kumar', 'Data Structures', 'Machine Learning'),
-('Priya Sharma', 'Database Management', 'Big Data'),
-('Vikas Patil', 'Networking', 'Cybersecurity'),
-('Neha Joshi', 'Software Engineering', 'Blockchain'),
-('Anjali Mehta', 'Artificial Intelligence', 'Deep Learning');
+('Dr. Anjali Mehta', 'Artificial Intelligence', 'Machine Learning'),
+('Prof. Ramesh Iyer', 'Data Structures', 'Graph Algorithms'),
+('Dr. Kavita Rao', 'Web Development', 'Progressive Web Apps');

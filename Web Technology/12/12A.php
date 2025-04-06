@@ -1,5 +1,7 @@
+<?//Write a PHP script to display student information on web page. ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Student Information</title>
 </head>

@@ -1,8 +1,7 @@
+<?//Write a PHP script to check whether accepted number is prime or not.?>
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Prime Number Checker</title>
-</head>
+<html>
 <body>
     <h2>Check if a Number is Prime</h2>
     <form method="post">

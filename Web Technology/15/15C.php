@@ -1,9 +1,7 @@
+<?/*Write PHP script to demonstrate the concept of introspection for examining object.*/?>
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>PHP Object Introspection</title>
-</head>
+<html>
 <body>
     <h2>PHP Object Introspection</h2>
 
@@ -23,18 +21,13 @@ class MyClass {
 
 $object = new MyClass();
 
-$className = get_class($object);
-echo "<strong>Class Name:</strong> $className<br><br>";
+echo "<strong>Class Name:</strong> " . get_class($object) . "<br><br>";
 
-$properties = get_object_vars($object);
-echo "<strong>Properties:</strong><br>";
-foreach ($properties as $property => $value) {
+foreach (get_object_vars($object) as $property => $value) {
     echo "$property: $value<br>";
 }
 
-$methods = get_class_methods($className);
-echo "<br><strong>Methods:</strong><br>";
-foreach ($methods as $method) {
+foreach (get_class_methods($object) as $method) {
     echo "$method<br>";
 }
 ?>

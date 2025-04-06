@@ -1,3 +1,15 @@
+<?/*Create a XML file which gives details of students admitted for different courses in Your College. Course names can be
+a. Arts
+b. Science
+c. Commerce
+d. Management
+Elements in each course are in following format.
+<Course>
+    <Level>…</Level>
+    <Intake Capacity>…</Intake Capacity>
+</Course>
+Save the file with “Course.xml”*/?>
+
 <?php
 $courses = [
     ["name" => "Arts", "level" => "Undergraduate", "capacity" => 120],

@@ -1,5 +1,7 @@
+<?//Write a PHP script to declare three variables and print maximum among them.?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Find Maximum Number</title>
 </head>

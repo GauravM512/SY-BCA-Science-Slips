@@ -1,3 +1,13 @@
+<?/*Write PHP script to generate an XML code in the following format
+<?xml version=1.0”?>
+<ABC College>
+    <Computer Application Department>
+        <Course> BCA(Science) </Course>
+        <Student Strength > 80</Student Strength>
+        <Number of Teachers>12</Number of Teachers>
+    </Computer Application Department>
+</ABC College>*/?>
+
 <?php
 $xml = new DOMDocument("1.0", "UTF-8");
 $xml->formatOutput = true;

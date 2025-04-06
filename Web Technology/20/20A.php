@@ -1,3 +1,4 @@
+<?//Write a PHP script to display source code of a webpage.?>
 <?php
     $url = "https://example.com";
 

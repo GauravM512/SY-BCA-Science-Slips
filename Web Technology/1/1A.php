@@ -1,8 +1,6 @@
-<?php
-$php_version = phpversion();
-$php_config = phpinfo();
+<?/*Write a PHP script to get the PHP version and configuration information.*/?>
 
-echo "PHP Version: $php_version\n\n";
-echo "PHP Configuration Information:\n";
-echo $php_config;
+<?php
+echo 'PHP Version: ' . phpversion() . "<br>";       
+echo 'PHP info : ' . phpinfo() . "<br>";
 ?>

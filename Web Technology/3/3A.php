@@ -1,3 +1,5 @@
+<?//Write a PHP script to script to display time table of your class( use HTML table tags in echo).?>
+
 <?php
 echo '
 <center>        

@@ -1,56 +1,81 @@
+<?/*Write a menu driven program to perform the following queue related operations
+a) Insert an element in queue
+b) Delete an element from queue
+c) Display the contents of queue*/?>
+
 <?php
-$queue = array();
+session_start();
 
-function enqueue(&$queue, $element) {
-    array_push($queue, $element);
+if (!isset($_SESSION['Queue'])) {
+    $_SESSION['Queue'] = [];
 }
 
-function dequeue(&$queue) {
-    if (empty($queue)) {
-        echo "Queue is empty. Cannot delete element.\n";
-    } else {
-        array_shift($queue);
-    }
-}
-
-function displayQueue($queue) {
-    if (empty($queue)) {
-        echo "Queue is empty.\n";
-    } else {
-        echo "Queue: ";
-        foreach ($queue as $element) {
-            echo $element . " ";
-        }
-        echo "\n";
-    }
-}
-
-do {
-    echo "\nMenu:\n";
-    echo "1. Insert element into the queue\n";
-    echo "2. Delete element from the queue\n";
-    echo "3. Display the contents of the queue\n";
-    echo "4. Exit\n";
-    $choice = readline("Enter your choice: ");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $choice = $_POST['choice'];
 
     switch ($choice) {
-        case '1':
-            $element = readline("Enter the element to insert: ");
-            enqueue($queue, $element);
-            displayQueue($queue);
+        case '1': 
+            if (!empty($_POST['element'])) {
+                $element = $_POST['element'];
+                array_push($_SESSION['Queue'], $element);
+                echo "<br>Inserted: $element";
+            } else {
+                echo "<br>Please enter an element to insert.";
+            }
             break;
-        case '2':
-            dequeue($queue);
-            displayQueue($queue);
+
+        case '2': 
+            if (!empty($_SESSION['Queue'])) {
+                $deleted = array_shift($_SESSION['Queue']);
+                echo "<br>Deleted: $deleted";
+            } else {
+                echo "<br>Queue is empty. Cannot delete element.";
+            }
             break;
-        case '3':
-            displayQueue($queue);
+
+        case '3': 
+            if (!empty($_SESSION['Queue'])) {
+                echo "<br>Queue: ";
+                foreach ($_SESSION['Queue'] as $item) {
+                    echo $item . " ";
+                }
+            } else {
+                echo "<br>Queue is empty.";
+            }
             break;
-        case '4':
-            echo "Exiting program...\n";
+
+        case '4': 
+            echo "<br>Exiting program...";
+            session_destroy();
+            exit();
             break;
+
         default:
-            echo "Invalid choice. Please enter a valid option.\n";
+            echo "<br>Invalid choice. Try again.";
     }
-} while ($choice != '4');
+}
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue Operations</title>
+</head>
+<body>
+    <h2>Menu-Driven Queue Operations</h2>
+
+    <form method="post">
+        <label>Select Operation:</label><br>
+        <input type="radio" name="choice" value="1" required> Insert element into the queue<br>
+        <input type="radio" name="choice" value="2">  Delete element from the queue<br>
+        <input type="radio" name="choice" value="3"> Display Queue<br>
+        <input type="radio" name="choice" value="4"> Exit<br><br>
+
+        <label>Element (if inserting):</label>
+        <input type="text" name="element"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+

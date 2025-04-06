@@ -1,3 +1,7 @@
+<?/*Write a menu driven program to perform the following stack related operations.
+a) Insert an element in stack.
+b) Delete an element from stack.[Hint: array_push(), array_pop()]*/?>
+
 <?php
 session_start();
 
@@ -51,9 +55,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Stack Operations</title>
 </head>
 <body>

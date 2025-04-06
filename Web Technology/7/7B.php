@@ -1,5 +1,8 @@
+<?/*Declare array. Reverse the order of elements, making the first element last and 
+last element first and similarly rearranging other array elements.[Hint : array_reverse()]*/?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Array Reverse</title>
 </head>
@@ -15,13 +18,12 @@ echo "<pre>";
 print_r($students);
 echo "</pre>";
 
-$reversedArray = array_reverse($students);
+$rev_Array = array_reverse($students);
 
 echo "<b>Reversed Array:</b><br>";
 echo "<pre>";
-print_r($reversedArray);
+print_r($rev_Array);
 echo "</pre>";
 ?>
-
 </body>
 </html>

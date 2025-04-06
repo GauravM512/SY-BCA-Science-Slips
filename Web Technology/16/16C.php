@@ -1,3 +1,14 @@
+<?/*Write a script to create XML file named “Teacher.xml”.
+<Department>
+    <Computer Science>
+        <Teacher Name>…</Teacher Name>
+        <Qualification>….</Qualification>
+        <Subject Taught>…</Subject Taught>
+        <Experience>…</Experience>
+    </Computer Science>
+</Department>
+Store the details of 5 teachers who are having qualification as NET*/?>
+
 <?php
 $teachers = [
     ["name" => "Rajesh Kumar", "qual" => "NET", "subject" => "Data Structures", "exp" => "10 years"],
